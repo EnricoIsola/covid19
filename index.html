@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
+    <!--Materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!-- Jvectormap css -->
+    <link rel="stylesheet" href="css/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Covid19 italy</title>
+  </head>
+  <body>
+
+  <!-- navbar -->
+  <nav style="padding-left:20px; padding-right:20px;">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo truncate"><i class="material-icons">coronavirus</i> COVID19 ITALY REPORT</a>
+      <a href="#" class="modal-trigger" id="btnGuida"><i class="material-icons right">help</i></a>
+    </div>
+  </nav>
+
+  <!-- main container -->
+  <div class="container" id="main_container">
+       
+          <!-- contenitore del loader -->
+          <div class="col s12 m6 offset-m3" id="loaderContainer">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+            <div> Connecting...</div>
+         </div>
+
+          <!-- contenitore del form -->
+          <div class="row">
+                <div id="formContainer">
+                  <form class="col s12 m8 offset-m2">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input type="text" class="datepicker" id="datePicker" placeholder="Select date..">
+                      </div>
+                      <div class="input-field col s6">
+                        <select id="typeData">
+                          <option value="" disabled selected>Select item..</option>
+                          <option value="ricoverati con sintomi">ricoverati con sintomi</option>
+                          <option value="terapia intensiva">terapia intensiva</option>
+                          <option value="nuovi intensiva">nuovi intensiva</option>
+                          <option value="totale ospedalizzati">totale ospedalizzati</option>
+                          <option value="nuovi ospedalizzati">nuovi ospedalizzati</option>
+                          <option value="isolamento domiciliare">isolamento domiciliare</option>
+                          <option value="totale positivi">totale positivi</option>
+                          <option value="variazione totale positivi">variazione totale positivi</option>
+                          <option value="nuovi positivi">nuovi positivi</option>
+                          <option style="color: #3908eb;" value="dimessi guariti">dimessi guariti</option>
+                          <option style="color: #FF0000;" value="totale deceduti">totale deceduti</option>
+                          <option style="color: #FF0000;" value="deceduti giornalieri">deceduti giornalieri</option>
+                          <option value="totale casi">totale casi</option>
+                          <option value="casi testati">casi testati</option>
+                          <option style="color: green"; value="tamponi">tamponi</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+          </div>
+          
+          
+         <div class="row">
+              <!-- contenitore del grafico a barre e della mappa -->
+              <div id="barChart-and-map-container">
+                  <!-- grafico a barre -->
+                  <div class="col s12 m6">
+                        <div  id="barChartContainer">
+                            <canvas id="myBarChart"></canvas>
+                        </div>
+                  </div>
+                  <!-- mappa italia -->
+                  <div class="col s12 m6">
+                        <div  id="italyMapContainer"></div>
+                  </div>
+              </div>
+         </div>
+
+         
+         <div class="row">
+                 <!-- grafico a linee -->
+                 <div  id="lineChartContainer" class="hide-on-med-and-down">
+                      <canvas id="myLineChart"></canvas>
+                      <!-- tooltip -->
+                      <div class="chartjs-tooltip" id="tooltip-0"></div>
+                 </div>
+         </div>
+
+         <!-- avviso per i disp mobile -->
+         <div class="row avviso center-align grey white-text hide-on-med-and-up">Il grafico a linee non è disponibile per il mobile</div>
+
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="footer-copyright teal">
+      <div class="container">
+      Dati ufficiali sull'epidemia COVID-19 ricavati attraverso API <a class="orange-text text-lighten-3" href="https://openpuglia.org/content/i-dati-ufficiali-sullepidemia-covid-19-attraverso-api-openpuglia">OpenPuglia</a>.<br>
+      Made by <a class="orange-text text-lighten-3" href="mailto:enricoisola59@yahoo.it">Enrico Isola</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Structure -->
+  <div id="modalForm" class="modal">
+    <div class="modal-content">
+      <h6>Guida rapida</h6>
+      <ol>
+        <li>(Select date..) seleziona la data richiesta</li>
+        <li>(Select item..) seleziona la voce richiesta</li>
+      </ol>
+      <h6>Tecnologie impiegate</h6>
+      <ol>
+        <li>Materialize framework</li>
+        <li>MVC pattern</li>
+        <li>Javascript</li>
+        <li>ES6 modules</li>
+        <li>Jquery</li>
+        <li>Chart.js (grafici)</li>
+        <li>Jvectormap.js (mappa interattiva)</li>
+        <li>Codice sorgente github</li>
+      </ol>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
+     <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- Materialize js js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+     <!-- Jvectormap js-->
+     <script src="js/jvectormap/jquery-jvectormap-2.0.5.min.js"></script>
+     <!-- jvectormap italy map js -->
+     <script src="js/jvectormap/jquery-jvectormap-it_regions-merc.js"></script>
+     <!--  Chart.js -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!-- Entry point -->
+    <script src="js/controller/controller.js" type="module"></script>
+
+  </body>
+</html>
