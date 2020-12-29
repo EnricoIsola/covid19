@@ -1,0 +1,138 @@
+:root {
+    --blue : #2429d1;
+    --red : #FF0000;
+    --green : #02cf65;
+    --grey: #777;
+    --black: black;
+}
+
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 3px;
+  }
+
+body{
+    font-family: 'Lato', sans-serif; 
+    display: flex;
+    flex-direction: column;
+}
+
+nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0;
+}
+
+#main_container {
+    flex: 1 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+#loaderContainer{
+    position: absolute;
+    top: 30%; 
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#barChartContainer{
+    height: 600px;
+}
+
+#italyMapContainer{
+    height: 600px;
+}
+
+#lineChartContainer{
+    height: 500px;
+    position: relative;
+}
+
+.box{
+    border: 1px solid red;
+}
+
+.avviso{
+    padding: 10px 10px;
+}
+
+input::-webkit-input-placeholder {
+    color: black !important;
+    }
+     
+    input:-moz-placeholder { /* Firefox 18- */
+    color: black !important;  
+    }
+     
+    input::-moz-placeholder {  /* Firefox 19+ */
+    color: black !important;  
+    }
+     
+    input:-ms-input-placeholder {  
+    color: black !important;  
+    }
+
+
+/* Utility */
+
+.font_bold{
+    font-weight: bold;
+}
+
+.border_item{
+    background-color: rgb(240, 238, 235);
+}
+
+/* Canvas e tooltip per le charts */
+canvas{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.chartjs-tooltip {
+    opacity: 1;
+    position: absolute;
+    background: rgba(255, 255, 255, 1);
+    color:black;
+    border-radius: 3px;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    pointer-events: none;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    padding: 4px;
+}
+
+.chartjs-tooltip-key {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+}
+/* ------------------------------- */
+
+
+
+
+/* .container {
+    margin: 0 auto;
+  
+    width: 90%;
+  }
+
+
+  @media only screen and (min-width: 601px) {
+    .container {
+      width: 85%;
+    }
+  }
+  @media only screen and (min-width: 993px) {
+    .container {
+      width: 70%;
+    }
+  } */
